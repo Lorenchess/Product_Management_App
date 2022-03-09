@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import com.chess4math.data.Drink;
 import com.chess4math.data.Food;
 import com.chess4math.data.Product;
+import com.chess4math.data.ProductManager;
+
 import static com.chess4math.data.Rating.*;
 
 
@@ -19,22 +21,25 @@ public class Shop {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Product p1 = new Drink(101,"Tea",BigDecimal.valueOf(1.99), THREE_STAR);
 
-        Product p2 = new Drink (102,"Coffee",BigDecimal.valueOf(1.99),
+        ProductManager pm = new ProductManager();
+
+        Product p1 = pm.createProduct (101,"Tea",BigDecimal.valueOf(1.99), THREE_STAR);
+
+        Product p2 = pm.createProduct (102,"Coffee",BigDecimal.valueOf(1.99),
                 FOUR_STAR);
 
-        Product p3 = new Food(103,"Cake",BigDecimal.valueOf(3.99),
+        Product p3 = pm.createProduct (103,"Cake",BigDecimal.valueOf(3.99),
                 FIVE_STAR, LocalDate.now().plusDays(2));
 
-        Product p4 = new Food(105,"Cookie",BigDecimal.valueOf(3.99),TWO_STAR,LocalDate.now());
+        Product p4 = pm.createProduct (105,"Cookie",BigDecimal.valueOf(3.99),TWO_STAR,LocalDate.now());
 
         Product p5 = p3.applyRating(THREE_STAR);
 
-        Product p6 = new Drink(104, "Chocolate", BigDecimal.valueOf(2.99),
+        Product p6 = pm.createProduct (104, "Chocolate", BigDecimal.valueOf(2.99),
                 FIVE_STAR);
 
-        Product p7 = new Food(104, "Chocolate", BigDecimal.valueOf(2.99),
+        Product p7 = pm.createProduct (104, "Chocolate", BigDecimal.valueOf(2.99),
                 FIVE_STAR, LocalDate.now().plusDays(2));
 
         Product p8 = p4.applyRating(FIVE_STAR);

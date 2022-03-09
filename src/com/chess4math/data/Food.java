@@ -7,16 +7,16 @@ import java.time.LocalDate;
  *
  * @author lorenchess
  */
-public class Food extends Product {
+public final class Food extends Product {
 
     private LocalDate bestBefore;
 
     /**
      * Get the value of the best before date for the product
-     *
      * @return the value of bestBefore
+     * The constructor access modifier is default so it could be accessed only in the package
      */
-    public Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
+    Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
         super(id, name, price, rating);
         this.bestBefore = bestBefore;
     }
