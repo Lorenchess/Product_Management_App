@@ -9,10 +9,9 @@ import java.util.Objects;
 
 
 /**
- *
  * @author lorenchess
  */
-public abstract class Product {
+public abstract class Product implements Rateable<Product>{
 
     private int id;
     private String name;
@@ -27,10 +26,14 @@ public abstract class Product {
         this.rating = rating;
     }
 
-    Product(int id, String name, BigDecimal price) {
+    Product (int id, String name, BigDecimal price) {
         this(id, name, price, NOT_RATED);
     }
-
+    /**
+     * Annotation @override is not required, but it helps to clarify that we are overriding
+     * the default method from the Rateable interface.
+     */
+    @Override
     public Rating getRating() {
         return rating;
     }
@@ -51,7 +54,13 @@ public abstract class Product {
         return price;
     }
 
-    public abstract Product applyRating(Rating newRating);
+    /**
+     * We do not need the abstract method anymore after creating and implementing the interface Rateable.
+     * The class Product already uses that method defined in Rateable
+     * and Food and Drink classes already implement/override that method.
+     */
+
+ //   public abstract Product applyRating(Rating newRating);
 //    {
 //        return new Product(id, name, price, newRating);
 //    }
